@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         view = loginView
         loginView?.delegate = self
+        dismissKeyboard()
+        loginView.configTextFieldsDelegate(delegate: self)
         
     }
 
@@ -36,4 +38,11 @@ extension LoginViewController: LoginViewProtocol {
     }
     
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

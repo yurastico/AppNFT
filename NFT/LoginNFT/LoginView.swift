@@ -52,7 +52,7 @@ class LoginView: UIView {
         return label
     }()
     
-    lazy var loginTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let  textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocorrectionType = .no
@@ -187,7 +187,7 @@ class LoginView: UIView {
         addSubview(logoImageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
-        addSubview(loginTextField)
+        addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(recoverPasswordButton)
         addSubview(subLoginImageView)
@@ -221,23 +221,23 @@ class LoginView: UIView {
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10),
             
             
-            loginTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 11),
-            loginTextField.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20 ),
-            loginTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            loginTextField.heightAnchor.constraint(equalToConstant: 39 ),
+            emailTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 11),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20 ),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            emailTextField.heightAnchor.constraint(equalToConstant: 39 ),
             
-            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 11),
-            passwordTextField.leadingAnchor.constraint(equalTo: loginTextField.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: loginTextField.trailingAnchor ),
-            passwordTextField.heightAnchor.constraint(equalTo: loginTextField.heightAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 11),
+            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor ),
+            passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor),
             
             recoverPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 9),
-            recoverPasswordButton.trailingAnchor.constraint(equalTo: loginTextField.trailingAnchor),
+            recoverPasswordButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             recoverPasswordButton.heightAnchor.constraint(equalToConstant: 16),
             
             subLoginImageView.topAnchor.constraint(equalTo: recoverPasswordButton.bottomAnchor, constant: 36),
-            subLoginImageView.trailingAnchor.constraint(equalTo: loginTextField.trailingAnchor),
-            subLoginImageView.leadingAnchor.constraint(equalTo: loginTextField.leadingAnchor),
+            subLoginImageView.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            subLoginImageView.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             subLoginImageView.heightAnchor.constraint(equalToConstant: 43),
             
             loginButton.topAnchor.constraint(equalTo: subLoginImageView.topAnchor),
@@ -266,6 +266,12 @@ class LoginView: UIView {
             
             
         ])
+    }
+    
+    func configTextFieldsDelegate(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
+        
     }
     
 }
