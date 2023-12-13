@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol LoginViewProtocol: AnyObject {
+    func tappedLoginButton()
+}
+
 class LoginView: UIView {
+    
+    weak var delegate: LoginViewProtocol?
     
     lazy var backgroundImageView: UIImageView = {
         let image = UIImageView()
@@ -93,7 +99,7 @@ class LoginView: UIView {
     }()
     
     @objc func  tappedRecoverPasswordButton(_ sender: UIButton) {
-        print("mamab")
+        self.delegate?.tappedLoginButton()
     }
     
     lazy var subLoginImageView: UIImageView = {
